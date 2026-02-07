@@ -14,7 +14,8 @@ pub struct CedictEntry {
 impl CedictEntry {
     /// Returns the (lowest) hsk level of this [`CedictEntry`].
     pub fn hsk(&self) -> Option<hsk::Hsk> {
-        hsk::HSK.level(&self.simplified)
+        let h = hsk::HSKLists::new();
+        h.level(&self.simplified)
     }
 
     #[allow(dead_code)]
